@@ -38,6 +38,7 @@
       "output": "dist"
     },
     "files": [
+      "LOGO.png",
       "index.js",
       "icon.ico",
       "yawspeed.py",

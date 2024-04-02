@@ -111,7 +111,7 @@ mainWindow.webContents.setMaxListeners(500);
         if (details.url.includes('background.webp') || details.url.includes('background2.webp')) {
             callback({ redirectURL: getRandomImageUrl() });
         } else if (details.url === 'https://kour.io/kour-title.webp') {
-            callback({ redirectURL: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png' });
+            callback({ redirectURL: 'https://i.imgur.com/fKt05OY.png' });
         } else {
             callback({});
         }

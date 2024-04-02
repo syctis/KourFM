@@ -113,3 +113,13 @@ window.addEventListener('DOMContentLoaded', () => {
         clearInterval(updateInterval);
     });
 });   
+
+window.addEventListener('DOMContentLoaded', () => {
+    const kourTitleImg = document.querySelector('img[src="https://kour.io/kour-title.webp"]');
+    if (kourTitleImg) {
+        kourTitleImg.src = 'https://i.imgur.com/fKt05OY.png';
+        kourTitleImg.style.position = 'fixed';
+        kourTitleImg.style.top = '-1.5vh';
+        kourTitleImg.style.left = '45%';
+    }
+});
