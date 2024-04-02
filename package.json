@@ -1,0 +1,59 @@
+{
+  "name": "KourFM",
+  "version": "13.3.7",
+  "description": "very bad client but okay i guess",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "build": "electron-builder"
+  },
+  "author": "syctis",
+  "license": "MIT",
+  "dependencies": {
+    "electron-fetch": "^1.9.1",
+    "sound-play": "^1.1.0",
+    "python-shell": "^5.0.0"
+  },
+  "devDependencies": {
+    "electron": "^29.1.5",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "extraResources": [
+      {
+        "from": "yawspeed.py",
+        "to": "scripts\\yawspeed.py"
+      },
+      {
+        "from": "startup.mp3",
+        "to": "audio\\startup.mp3"
+      }
+    ],
+    "appId": "kour.io",
+    "productName": "KourFM",
+    "icon": "icon.ico",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.js",
+      "icon.ico",
+      "yawspeed.py",
+      "preload.js"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  }
+}
