@@ -10,6 +10,10 @@
 
 ---------------------------------
 
+Custom Loading Screens
+
+---------------------------------
+
 *Python Yawspeed Script (needs python, pynput and pyautogui dependencies, to work)*
 
 *(Mouse 4 and Mouse 5 for spinning left/right)*
