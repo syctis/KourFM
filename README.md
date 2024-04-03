@@ -10,7 +10,7 @@
 
 ---------------------------------
 
-Custom Loading Screens | Loading Texts
+Custom Loading Screens | Custom Loading Texts
 
 ---------------------------------
 
