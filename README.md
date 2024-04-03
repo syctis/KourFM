@@ -1,4 +1,4 @@
-**F5 = Normal Reload
+**F5 = Normal Reload**
 
 **F6 = Paste copied Kour.io Lobbylink (hit twice for some reason)**
 
