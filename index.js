@@ -20,7 +20,7 @@ function runPythonScript(scriptPath) {
 }
 
 function createMenu(mainWindow) {
-    const options = [ ...Array.from({ length: 14 }, (_, i) => `op${i + 5}`)];
+    const options = [ 'dev/', ...Array.from({ length: 6 }, (_, i) => `dev${i + 2}`)];
     dialog.showMessageBox(mainWindow, {
         type: 'info',
         buttons: options,
