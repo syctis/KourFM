@@ -6,7 +6,7 @@
 
 **F7 = Force Reload back to main Kour.io**
 
-**F8 = open OP Versions list (not automatically updated or maintained)**
+**F8 = open Test Versions list (not automatically updated or maintained)**
 
 ---------------------------------
 
