@@ -3,9 +3,7 @@ console.log(__dirname);
 const { app, BrowserWindow, globalShortcut, dialog, clipboard, ipcMain } = require('electron');
 const { PythonShell } = require('python-shell');
 const path = require('path');
-const sound = require('sound-play')
-
-let mainWindow;
+const sound = require('sound-play');
 
 function runPythonScript(scriptPath) {
     console.log('Running Python script:', scriptPath); 
@@ -24,7 +22,7 @@ function createMenu(mainWindow) {
     dialog.showMessageBox(mainWindow, {
         type: 'info',
         buttons: options,
-        message: 'Choose an op version:'
+        message: 'Choose a Test version:'
     }).then((result) => {
         if (!result.canceled) {
             const selectedOption = options[result.response];
@@ -52,8 +50,83 @@ function createWindow() {
     });
 
     mainWindow.setTitle("kour.io - electron");
-    mainWindow.loadURL('https://kour.io');
+    mainWindow.loadURL('https://kour.io/');
     mainWindow.removeMenu();
+
+    mainWindow.webContents.on('dom-ready', () => {
+        function updateLoadingText() {
+            const yourLoadingTexts = [
+                "Joining FaZe Clan",
+                "Love yourself before Loving others",
+                "Its okay to try Again tomorrow",
+                "Great things Take time",
+                "Remember, Kouring is better than whoring",
+                "Hello Kitty",
+                "Bitcoin Miner Loading...",
+                "hey, you are finally awake",
+                "FIND JOY WHEREVERYOU ARE",
+                "Watching Ice Teamtage 14",
+                "Edging the Bug",
+                "Bugging the Edge", "Smoothment",
+                "Climbing Crane on Highrise",
+                "720 Fakie",
+                "Make Today a Happy Day",
+                "360 Temperrrshot",
+                "1080 Tittynac",
+                "leanchicken",
+                "lurk & jerk",
+                "HOT SINGLES IN YOUR AREA",
+                "banging the boat on carrier",
+                "Dont knife the barrel :)",
+                "Catflip to Glide",
+                "Clearing out to Last",
+                "Trickshot Last Nice",
+                "single and ready to mingle",
+                "Grandmas looking for new Love",
+                "1v1ing on Rust Quickscope only",
+                "No reload, No clip",
+                "WHERE WAS HE?!",
+                "Fastoh reacting to FaZe ILLCAMS Episode",
+                "Over the Shoulder",
+                "Initiating Shield Bounce",
+                "Currently Hitting a 2 Piece",
+                "Stop n Stares are NOT Trickshots",
+                "Hitting a closer",
+                "Hitting an opener",
+                "de_nuke",
+                "ONLY KOUR FM BANGERS",
+                "Nuke Radio",
+                "KourFM",
+                "abolish the bourgeoisie",
+                "Please dont add shotgun jumping",
+                "Drop AWP men",
+                "downloading dropout-exploits.zip",
+                "GREEN GREEN WHATS YOUR PROBLEM MAN ME SAID ALONE RAMP",
+                "asdfghbjnkml,swedrft",
+            ];
+    
+mainWindow.webContents.executeJavaScript(`
+if (typeof document !== 'undefined') {
+    const loadingTxtElement = document.getElementById('loadingTxt');
+    const loadingTxtMinimalElement = document.getElementById('loadingTxtMinimal'); 
+    if (loadingTxtElement) {
+        loadingTxtElement.textContent = '${yourLoadingTexts[Math.floor(Math.random() * yourLoadingTexts.length)]}';
+    }
+    if (loadingTxtMinimalElement) {
+        loadingTxtMinimalElement.style.display = 'none';
+    }
+}
+`).catch(error => {
+console.error('Error updating loading text:', error);
+});
+        }
+        updateLoadingText();
+        const updateInterval = setInterval(updateLoadingText, 15); 
+    
+        mainWindow.on('closed', () => {
+            clearInterval(updateInterval); 
+        });
+    });
 
     mainWindow.once('ready-to-show', () => {    
         const audioFile = path.join(__dirname, '..', 'audio', 'startup.mp3');
@@ -70,6 +143,23 @@ function createWindow() {
             console.error('Error hiding cmpPersistentLink:', error);
         });
     });
+
+mainWindow.webContents.on('dom-ready', () => {
+    mainWindow.webContents.executeJavaScript(`
+        // Function to remove an element by its ID
+        function removeElementById(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.parentNode.removeChild(element);
+            }
+        }
+        removeElementById("kour-io_728x90-parent");
+        removeElementById("kour-io_300x600-parent");
+        removeElementById("kour-io_300x250-parent");
+    `).catch(error => {
+        console.error('Error removing ad elements:', error);
+    });
+});
 
     globalShortcut.register('F8', () => {
         createMenu(mainWindow);
@@ -129,6 +219,12 @@ function getRandomImageUrl() {
     const imageUrls = [
         'https://i.imgur.com/KIq389u.gif',
         'https://i.imgur.com/21Vvlbd.gif',
+        'https://i.imgur.com/ZPFeR4x.png',
+        'https://i.imgur.com/HJWzaP5.png',
+        'https://i.imgur.com/JfQ6A0M.png',
+        'https://i.imgur.com/M2MpElR.png',
+        'https://i.imgur.com/F4ChKPF.png',
+        'https://i.imgur.com/BmmaDdY.png',
         'https://i.imgur.com/tZRtrzw.png',
         'https://64.media.tumblr.com/3862509863edc27f50c3d69e0ccd0da2/e913a89c98e2cce2-cf/s540x810/cfc6071743c7c8c9b511e29aa7156bfc260565f7.gif',
         'https://wallpapers.com/images/hd/faze-rug-q99q3iiuunspy2u6.jpg',

@@ -1,6 +1,6 @@
 {
   "name": "KourFM",
-  "version": "14.4.0",
+  "version": "16.6.9",
   "description": "very bad client but okay i guess",
   "main": "index.js",
   "scripts": {
